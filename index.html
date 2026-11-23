@@ -56,19 +56,20 @@
 			display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 10px;
 			background: var(--accent); color: #11161e; font-weight: 600; text-decoration: none;
 		}
-		.downloads { display: grid; gap: 10px; margin: 8px 0 14px; }
-		.download {
-			display: flex; justify-content: space-between; align-items: center; gap: 12px;
-			background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px;
+		.platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 14px; }
+		@media (max-width: 620px) { .platforms { grid-template-columns: 1fr; } }
+		.platform { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px 18px; }
+		.platform h3 { color: var(--strong); font-size: 18px; margin: 0; }
+		.platform .sub { color: var(--muted); font-size: 14px; margin: 2px 0 12px; }
+		.links { display: flex; flex-wrap: wrap; gap: 8px; }
+		.link {
+			display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px;
+			border: 1px solid var(--accent); color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none;
 		}
-		.download .what { color: var(--strong); font-weight: 600; }
-		.download .detail { color: var(--muted); font-size: 14px; }
-		.download a.get {
-			flex: none; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent);
-			color: var(--accent); font-weight: 600; text-decoration: none; white-space: nowrap;
-		}
-		.download.soon a.get { display: none; }
-		.download.soon .what::after { content: " \00b7  coming soon"; color: var(--muted); font-weight: 400; }
+		.link:hover { background: var(--accent); color: #11161e; }
+		.link.store { background: var(--accent); color: #11161e; }
+		.link.soon { border: 1px dashed var(--line); color: var(--muted); background: none; font-weight: 500; pointer-events: none; }
+		.link.soon::after { content: "soon"; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; }
 		.note { color: var(--muted); font-size: 15px; }
 		.release { border-left: 3px solid var(--line); padding: 2px 0 2px 16px; margin: 0 0 22px; }
 		.release.latest { border-left-color: var(--accent); }
@@ -109,41 +110,41 @@
 
 	<section id="download">
 		<h2>Get Zenz <span id="version" class="note"></span></h2>
-		<div class="downloads">
-			<div class="download soon" data-file="zenz-app-mac-apple-silicon.zip">
-				<div><div class="what">Mac app</div><div class="detail">For Macs with Apple silicon (M1 and later)</div></div>
-				<a class="get" href="#">Download</a>
+		<div class="platforms">
+			<div class="platform">
+				<h3>Mac</h3>
+				<p class="sub">The app, or the terminal version</p>
+				<div class="links">
+					<a class="link store soon" data-store="mac" href="#">Mac App Store</a>
+					<a class="link soon" data-file="zenz-app-mac-apple-silicon.zip" href="#">App · Apple silicon</a>
+					<a class="link soon" data-file="zenz-app-mac-intel.zip" href="#">App · Intel</a>
+					<a class="link soon" data-file="zenz-terminal-mac-apple-silicon.tar.gz" href="#">Terminal · Apple silicon</a>
+					<a class="link soon" data-file="zenz-terminal-mac-intel.tar.gz" href="#">Terminal · Intel</a>
+				</div>
 			</div>
-			<div class="download soon" data-file="zenz-app-mac-intel.zip">
-				<div><div class="what">Mac app</div><div class="detail">For Macs with an Intel processor</div></div>
-				<a class="get" href="#">Download</a>
+			<div class="platform">
+				<h3>iPhone and iPad</h3>
+				<p class="sub">One app for both</p>
+				<div class="links">
+					<a class="link store soon" data-store="ios" href="#">App Store</a>
+					<a class="link soon" data-store="testflight" href="#">TestFlight beta</a>
+				</div>
 			</div>
-			<div class="download soon">
-				<div><div class="what">iPhone and iPad</div><div class="detail">Being tested now, then on the App Store</div></div>
+			<div class="platform">
+				<h3>Windows</h3>
+				<p class="sub">The terminal version, with the app to follow</p>
+				<div class="links">
+					<a class="link soon" data-file="zenz-terminal-windows-x64.zip" href="#">Terminal · Intel and AMD</a>
+					<a class="link soon" data-file="zenz-terminal-windows-arm64.zip" href="#">Terminal · Arm</a>
+				</div>
 			</div>
-			<div class="download soon" data-file="zenz-terminal-mac-apple-silicon.tar.gz">
-				<div><div class="what">Terminal version for Mac</div><div class="detail">Apple silicon</div></div>
-				<a class="get" href="#">Download</a>
-			</div>
-			<div class="download soon" data-file="zenz-terminal-mac-intel.tar.gz">
-				<div><div class="what">Terminal version for Mac</div><div class="detail">Intel</div></div>
-				<a class="get" href="#">Download</a>
-			</div>
-			<div class="download soon" data-file="zenz-terminal-windows-x64.zip">
-				<div><div class="what">Terminal version for Windows</div><div class="detail">Most PCs (Intel and AMD)</div></div>
-				<a class="get" href="#">Download</a>
-			</div>
-			<div class="download soon" data-file="zenz-terminal-windows-arm64.zip">
-				<div><div class="what">Terminal version for Windows</div><div class="detail">Windows on Arm</div></div>
-				<a class="get" href="#">Download</a>
-			</div>
-			<div class="download soon" data-file="zenz-terminal-linux-x64.tar.gz">
-				<div><div class="what">Terminal version for Linux</div><div class="detail">Intel and AMD</div></div>
-				<a class="get" href="#">Download</a>
-			</div>
-			<div class="download soon" data-file="zenz-terminal-linux-arm64.tar.gz">
-				<div><div class="what">Terminal version for Linux</div><div class="detail">Arm, such as a Raspberry Pi 4 or 5</div></div>
-				<a class="get" href="#">Download</a>
+			<div class="platform">
+				<h3>Linux</h3>
+				<p class="sub">The terminal version</p>
+				<div class="links">
+					<a class="link soon" data-file="zenz-terminal-linux-x64.tar.gz" href="#">Terminal · Intel and AMD</a>
+					<a class="link soon" data-file="zenz-terminal-linux-arm64.tar.gz" href="#">Terminal · Arm</a>
+				</div>
 			</div>
 		</div>
 		<p class="note">The terminal version is one program, <code>zenz</code>, with no installer: unpack it and run it from a terminal.
@@ -179,6 +180,20 @@
 	// reached, the page still links to the releases page.
 	(async function () {
 		const repo = "trevleyb/zenz-app";
+
+		// The stores' links, once Zenz is there: paste each between the quotes, and its button goes live.
+		const stores = {
+			mac: "",
+			ios: "",
+			testflight: ""
+		};
+		document.querySelectorAll(".link[data-store]").forEach(link => {
+			const url = stores[link.dataset.store];
+			if (!url) return;
+			link.classList.remove("soon");
+			link.href = url;
+		});
+
 		let releases;
 		try {
 			const answer = await fetch("https://api.github.com/repos/" + repo + "/releases?per_page=20");
@@ -191,11 +206,11 @@
 
 		const latest = releases[0];
 		const files = new Map(latest.assets.map(a => [a.name, a.browser_download_url]));
-		document.querySelectorAll(".download[data-file]").forEach(row => {
-			const url = files.get(row.dataset.file);
+		document.querySelectorAll(".link[data-file]").forEach(link => {
+			const url = files.get(link.dataset.file);
 			if (!url) return;
-			row.classList.remove("soon");
-			row.querySelector("a.get").href = url;
+			link.classList.remove("soon");
+			link.href = url;
 		});
 		document.getElementById("version").textContent = "· version " + latest.tag_name.replace(/^v/, "");
 
