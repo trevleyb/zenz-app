@@ -1,0 +1,26 @@
+<svg width="2400" height="600" viewBox="0 0 2400 600" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<linearGradient id="night" x1="0" y1="0" x2="2400" y2="600" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#1B3A44" />
+			<stop offset="0.5" stop-color="#18202B" />
+			<stop offset="1" stop-color="#11161E" />
+		</linearGradient>
+		<radialGradient id="glow" cx="820" cy="300" r="360" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#F0A93A" stop-opacity="0.45" />
+			<stop offset="0.3" stop-color="#F0A93A" stop-opacity="0.14" />
+			<stop offset="1" stop-color="#F0A93A" stop-opacity="0" />
+		</radialGradient>
+	</defs>
+	<rect width="2400" height="600" fill="url(#night)" />
+	<circle cx="820" cy="300" r="360" fill="url(#glow)" />
+	<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+		<ellipse cx="820" cy="300" rx="330" ry="250" stroke="#3E5266" stroke-width="8" />
+		<ellipse cx="820" cy="300" rx="245" ry="186" stroke="#55647A" stroke-width="10" />
+		<ellipse cx="820" cy="300" rx="160" ry="122" stroke="#728299" stroke-width="10" />
+		<ellipse cx="820" cy="300" rx="80" ry="61" stroke="#C9B98E" stroke-width="10" />
+	</g>
+	<circle cx="820" cy="300" r="34" fill="#F0A93A" />
+	<circle cx="820" cy="300" r="15" fill="#FFE7C2" />
+	<text x="1220" y="300" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="150" font-weight="700" fill="#F2F4F7">Zenz</text>
+	<text x="1226" y="390" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="56" fill="#C8CFD9">Play classic text adventures. Free.</text>
+</svg>
