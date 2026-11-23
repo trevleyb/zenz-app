@@ -61,9 +61,11 @@
 		.platform { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px 18px; }
 		.platform h3 { color: var(--strong); font-size: 18px; margin: 0; }
 		.platform .sub { color: var(--muted); font-size: 14px; margin: 2px 0 12px; }
-		.links { display: flex; flex-wrap: wrap; gap: 8px; }
+		.links { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; align-items: center; }
+		.links .kind { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+		.links .row { display: flex; flex-wrap: wrap; gap: 6px; }
 		.link {
-			display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px;
+			display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px;
 			border: 1px solid var(--accent); color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none;
 		}
 		.link:hover { background: var(--accent); color: #11161e; }
@@ -115,35 +117,50 @@
 				<h3>Mac</h3>
 				<p class="sub">The app, or the terminal version</p>
 				<div class="links">
-					<a class="link store soon" data-store="mac" href="#">Mac App Store</a>
-					<a class="link soon" data-file="zenz-app-mac-apple-silicon.zip" href="#">App · Apple silicon</a>
-					<a class="link soon" data-file="zenz-app-mac-intel.zip" href="#">App · Intel</a>
-					<a class="link soon" data-file="zenz-terminal-mac-apple-silicon.tar.gz" href="#">Terminal · Apple silicon</a>
-					<a class="link soon" data-file="zenz-terminal-mac-intel.tar.gz" href="#">Terminal · Intel</a>
+					<span class="kind">Store</span>
+					<div class="row"><a class="link store soon" data-store="mac" href="#">Mac App Store</a></div>
+					<span class="kind">App</span>
+					<div class="row">
+						<a class="link soon" data-file="zenz-app-mac-apple-silicon.zip" href="#">Apple silicon</a>
+						<a class="link soon" data-file="zenz-app-mac-intel.zip" href="#">Intel</a>
+					</div>
+					<span class="kind">Terminal</span>
+					<div class="row">
+						<a class="link soon" data-file="zenz-terminal-mac-apple-silicon.tar.gz" href="#">Apple silicon</a>
+						<a class="link soon" data-file="zenz-terminal-mac-intel.tar.gz" href="#">Intel</a>
+					</div>
 				</div>
 			</div>
 			<div class="platform">
 				<h3>iPhone and iPad</h3>
 				<p class="sub">One app for both</p>
 				<div class="links">
-					<a class="link store soon" data-store="ios" href="#">App Store</a>
-					<a class="link soon" data-store="testflight" href="#">TestFlight beta</a>
+					<span class="kind">Store</span>
+					<div class="row"><a class="link store soon" data-store="ios" href="#">App Store</a></div>
+					<span class="kind">Beta</span>
+					<div class="row"><a class="link soon" data-store="testflight" href="#">TestFlight</a></div>
 				</div>
 			</div>
 			<div class="platform">
 				<h3>Windows</h3>
 				<p class="sub">The terminal version, with the app to follow</p>
 				<div class="links">
-					<a class="link soon" data-file="zenz-terminal-windows-x64.zip" href="#">Terminal · Intel and AMD</a>
-					<a class="link soon" data-file="zenz-terminal-windows-arm64.zip" href="#">Terminal · Arm</a>
+					<span class="kind">Terminal</span>
+					<div class="row">
+						<a class="link soon" data-file="zenz-terminal-windows-x64.zip" href="#">Intel and AMD</a>
+						<a class="link soon" data-file="zenz-terminal-windows-arm64.zip" href="#">Arm</a>
+					</div>
 				</div>
 			</div>
 			<div class="platform">
 				<h3>Linux</h3>
 				<p class="sub">The terminal version</p>
 				<div class="links">
-					<a class="link soon" data-file="zenz-terminal-linux-x64.tar.gz" href="#">Terminal · Intel and AMD</a>
-					<a class="link soon" data-file="zenz-terminal-linux-arm64.tar.gz" href="#">Terminal · Arm</a>
+					<span class="kind">Terminal</span>
+					<div class="row">
+						<a class="link soon" data-file="zenz-terminal-linux-x64.tar.gz" href="#">Intel and AMD</a>
+						<a class="link soon" data-file="zenz-terminal-linux-arm64.tar.gz" href="#">Arm</a>
+					</div>
 				</div>
 			</div>
 		</div>
