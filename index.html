@@ -56,6 +56,25 @@
 			display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 10px;
 			background: var(--accent); color: #11161e; font-weight: 600; text-decoration: none;
 		}
+		.downloads { display: grid; gap: 10px; margin: 8px 0 14px; }
+		.download {
+			display: flex; justify-content: space-between; align-items: center; gap: 12px;
+			background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px;
+		}
+		.download .what { color: var(--strong); font-weight: 600; }
+		.download .detail { color: var(--muted); font-size: 14px; }
+		.download a.get {
+			flex: none; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent);
+			color: var(--accent); font-weight: 600; text-decoration: none; white-space: nowrap;
+		}
+		.download.soon a.get { display: none; }
+		.download.soon .what::after { content: " \00b7  coming soon"; color: var(--muted); font-weight: 400; }
+		.note { color: var(--muted); font-size: 15px; }
+		.release { border-left: 3px solid var(--line); padding: 2px 0 2px 16px; margin: 0 0 22px; }
+		.release.latest { border-left-color: var(--accent); }
+		.release h3 { color: var(--strong); font-size: 18px; margin: 0 0 2px; }
+		.release .date { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+		.release ul { margin-bottom: 0; }
 		footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); }
 		@media (max-width: 520px) {
 			h1 { font-size: 36px; }
@@ -88,9 +107,53 @@
 		</ul>
 	</section>
 
-	<section>
-		<h2>Where it runs</h2>
-		<p>On Mac, iPhone and iPad, where it is being tested ahead of the App Store, and as a terminal program on Mac, Linux and Windows.</p>
+	<section id="download">
+		<h2>Get Zenz <span id="version" class="note"></span></h2>
+		<div class="downloads">
+			<div class="download soon" data-file="zenz-app-mac-apple-silicon.zip">
+				<div><div class="what">Mac app</div><div class="detail">For Macs with Apple silicon (M1 and later)</div></div>
+				<a class="get" href="#">Download</a>
+			</div>
+			<div class="download soon" data-file="zenz-app-mac-intel.zip">
+				<div><div class="what">Mac app</div><div class="detail">For Macs with an Intel processor</div></div>
+				<a class="get" href="#">Download</a>
+			</div>
+			<div class="download soon">
+				<div><div class="what">iPhone and iPad</div><div class="detail">Being tested now, then on the App Store</div></div>
+			</div>
+			<div class="download soon" data-file="zenz-terminal-mac-apple-silicon.tar.gz">
+				<div><div class="what">Terminal version for Mac</div><div class="detail">Apple silicon</div></div>
+				<a class="get" href="#">Download</a>
+			</div>
+			<div class="download soon" data-file="zenz-terminal-mac-intel.tar.gz">
+				<div><div class="what">Terminal version for Mac</div><div class="detail">Intel</div></div>
+				<a class="get" href="#">Download</a>
+			</div>
+			<div class="download soon" data-file="zenz-terminal-windows-x64.zip">
+				<div><div class="what">Terminal version for Windows</div><div class="detail">Most PCs (Intel and AMD)</div></div>
+				<a class="get" href="#">Download</a>
+			</div>
+			<div class="download soon" data-file="zenz-terminal-windows-arm64.zip">
+				<div><div class="what">Terminal version for Windows</div><div class="detail">Windows on Arm</div></div>
+				<a class="get" href="#">Download</a>
+			</div>
+			<div class="download soon" data-file="zenz-terminal-linux-x64.tar.gz">
+				<div><div class="what">Terminal version for Linux</div><div class="detail">Intel and AMD</div></div>
+				<a class="get" href="#">Download</a>
+			</div>
+			<div class="download soon" data-file="zenz-terminal-linux-arm64.tar.gz">
+				<div><div class="what">Terminal version for Linux</div><div class="detail">Arm, such as a Raspberry Pi 4 or 5</div></div>
+				<a class="get" href="#">Download</a>
+			</div>
+		</div>
+		<p class="note">The terminal version is one program, <code>zenz</code>, with no installer: unpack it and run it from a terminal.
+		Windows may warn that it doesn't recognise the publisher the first time it runs; choose More info, then Run anyway.
+		Every version is on <a href="https://github.com/trevleyb/zenz-app/releases">the releases page</a>.</p>
+	</section>
+
+	<section id="releases">
+		<h2>Releases</h2>
+		<div id="release-list"><p class="note">See <a href="https://github.com/trevleyb/zenz-app/releases">every release and what it brought</a>.</p></div>
 	</section>
 
 	<section>
@@ -111,5 +174,70 @@
 		Zenz is made by Trevor Leybourne. &middot; <a href="https://github.com/trevleyb">github.com/trevleyb</a>
 	</footer>
 </main>
+<script>
+	// The downloads and releases come from GitHub as the page opens, so a new release needs no change here. If GitHub can't be
+	// reached, the page still links to the releases page.
+	(async function () {
+		const repo = "trevleyb/zenz-app";
+		let releases;
+		try {
+			const answer = await fetch("https://api.github.com/repos/" + repo + "/releases?per_page=20");
+			if (!answer.ok) return;
+			releases = (await answer.json()).filter(r => !r.draft && !r.prerelease);
+		} catch (e) {
+			return;
+		}
+		if (releases.length === 0) return;
+
+		const latest = releases[0];
+		const files = new Map(latest.assets.map(a => [a.name, a.browser_download_url]));
+		document.querySelectorAll(".download[data-file]").forEach(row => {
+			const url = files.get(row.dataset.file);
+			if (!url) return;
+			row.classList.remove("soon");
+			row.querySelector("a.get").href = url;
+		});
+		document.getElementById("version").textContent = "· version " + latest.tag_name.replace(/^v/, "");
+
+		const list = document.getElementById("release-list");
+		list.replaceChildren();
+		releases.forEach((release, index) => {
+			const block = document.createElement("div");
+			block.className = "release" + (index === 0 ? " latest" : "");
+			const title = document.createElement("h3");
+			title.textContent = (release.name || release.tag_name) + (index === 0 ? " (latest)" : "");
+			const date = document.createElement("div");
+			date.className = "date";
+			date.textContent = new Date(release.published_at).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+			block.append(title, date, notesOf(release.body || ""));
+			list.append(block);
+		});
+		const more = document.createElement("p");
+		more.className = "note";
+		more.innerHTML = 'Every file of every version is on <a href="https://github.com/' + repo + '/releases">the releases page</a>.';
+		list.append(more);
+	})();
+
+	// A release's notes are a few lines, mostly "- " points: shown as a list and paragraphs, as plain text.
+	function notesOf(text) {
+		const holder = document.createElement("div");
+		let list = null;
+		text.split(/\r?\n/).forEach(line => {
+			const point = line.match(/^\s*[-*]\s+(.*)$/);
+			if (point) {
+				if (!list) { list = document.createElement("ul"); holder.append(list); }
+				const item = document.createElement("li");
+				item.textContent = point[1];
+				list.append(item);
+			} else if (line.trim() !== "") {
+				list = null;
+				const para = document.createElement("p");
+				para.textContent = line.trim();
+				holder.append(para);
+			}
+		});
+		return holder;
+	}
+</script>
 </body>
 </html>
