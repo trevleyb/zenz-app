@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Zenz privacy policy</title>
+	<meta name="description" content="What Zenz keeps on your device, what it fetches from the internet, and what it never collects.">
+	<link rel="icon" type="image/svg+xml" href="icon.svg">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<style>
+		:root {
+			--bg: #11161e;
+			--bg-top: #1b3a44;
+			--panel: #18202b;
+			--text: #d6dbe3;
+			--muted: #9aa5b4;
+			--strong: #f2f4f7;
+			--accent: #f0a93a;
+			--line: #2c3746;
+		}
+		@media (prefers-color-scheme: light) {
+			:root {
+				--bg: #f6f3ec;
+				--bg-top: #e3ecee;
+				--panel: #ffffff;
+				--text: #2c3440;
+				--muted: #5d6877;
+				--strong: #11161e;
+				--accent: #b86e0c;
+				--line: #dcd6c9;
+			}
+		}
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg) 45%) fixed;
+			color: var(--text);
+			font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+		}
+		main { max-width: 760px; margin: 0 auto; padding: 56px 20px 40px; }
+		header { text-align: center; margin-bottom: 48px; }
+		header img { width: 128px; height: 128px; border-radius: 28px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35); }
+		h1 { color: var(--strong); font-size: 44px; line-height: 1.1; margin: 24px 0 8px; letter-spacing: -0.5px; }
+		.tagline { color: var(--muted); font-size: 20px; margin: 0; }
+		h2 { color: var(--strong); font-size: 22px; margin: 40px 0 12px; }
+		p { margin: 0 0 14px; }
+		ul { margin: 0 0 14px; padding-left: 22px; }
+		li { margin-bottom: 6px; }
+		strong { color: var(--strong); }
+		a { color: var(--accent); }
+		.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; margin-top: 16px; }
+		.button {
+			display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 10px;
+			background: var(--accent); color: #11161e; font-weight: 600; text-decoration: none;
+		}
+		.button.quiet { background: none; color: var(--accent); border: 1px solid var(--accent); padding: 11px 21px; }
+		.platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 14px; }
+		@media (max-width: 620px) { .platforms { grid-template-columns: 1fr; } }
+		.platform { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px 18px; }
+		.platform h3 { color: var(--strong); font-size: 18px; margin: 0; }
+		.platform .sub { color: var(--muted); font-size: 14px; margin: 2px 0 12px; }
+		.links { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; align-items: center; }
+		.links .kind { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+		.links .row { display: flex; flex-wrap: wrap; gap: 6px; }
+		.link {
+			display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px;
+			border: 1px solid var(--accent); color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none;
+		}
+		.link:hover { background: var(--accent); color: #11161e; }
+		.link.store { background: var(--accent); color: #11161e; }
+		.link.soon { border: 1px dashed var(--line); color: var(--muted); background: none; font-weight: 500; pointer-events: none; }
+		.link.soon::after { content: "soon"; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; }
+		.note { color: var(--muted); font-size: 15px; }
+		.release { border-left: 3px solid var(--line); padding: 2px 0 2px 16px; margin: 0 0 22px; }
+		.release.latest { border-left-color: var(--accent); }
+		.release h3 { color: var(--strong); font-size: 18px; margin: 0 0 2px; }
+		.release .date { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+		.release ul { margin-bottom: 0; }
+		footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); }
+		@media (max-width: 520px) {
+			h1 { font-size: 36px; }
+			header img { width: 104px; height: 104px; border-radius: 23px; }
+		}
+		header.small { margin-bottom: 32px; }
+		header.small img { width: 72px; height: 72px; border-radius: 16px; }
+		header.small h1 { font-size: 34px; margin-top: 16px; }
+		.summary { font-size: 19px; color: var(--strong); }
+	</style>
+</head>
+<body>
+<main>
+	<header class="small">
+		<a href="./"><img src="icon-512.png" alt="The Zenz icon"></a>
+		<h1>Privacy</h1>
+		<p class="tagline">Zenz, for iPhone, iPad, Mac, Windows, Linux and Android</p>
+	</header>
+
+	<section class="card">
+		<p class="summary" style="margin-top: 0">Zenz collects nothing about you. There is no account, no advertising, no analytics and no tracking,
+		and nothing you do in Zenz is sent to me or to anyone else.</p>
+		<p class="note" style="margin-bottom: 0">Effective 24 November 2026.</p>
+	</section>
+
+	<section>
+		<h2>What stays on your device</h2>
+		<p>Your games, your saved games, your notes, the maps Zenz draws, your settings and any files you attach to a game are kept in Zenz's
+		own folder on your device and are never uploaded. Your device's own backups, such as iCloud Backup, may include that folder, as they
+		do for any app.</p>
+		<p>If Zenz closes unexpectedly, it writes a crash log and a short trail of its last steps into the same folder. They stay there. The
+		next time Zenz opens, Home offers to share or copy the log, and it only goes anywhere if you choose to send it.</p>
+	</section>
+
+	<section>
+		<h2>What Zenz fetches from the internet</h2>
+		<p>Zenz goes online only for these, and only when you use them:</p>
+		<ul>
+			<li><strong>Finding games.</strong> What you search for is sent to the Interactive Fiction Database (<a href="https://ifdb.org/">ifdb.org</a>),
+			which answers with matching games.</li>
+			<li><strong>Game details and covers.</strong> To show a game's cover, author and description, Zenz asks IFDB about the games in your
+			library, by their title and the identifier the game carries.</li>
+			<li><strong>Downloading a game.</strong> A free game you choose is downloaded from the IF Archive (<a href="https://ifarchive.org/">ifarchive.org</a>).</li>
+			<li><strong>Hints.</strong> If you ask for hints to one of Infocom's games, they are downloaded from the IF Archive.</li>
+		</ul>
+		<p>These requests name only Zenz and its version. They carry nothing about you. Like any website, those sites see the internet address
+		the request comes from; their own privacy policies cover what they do with it.</p>
+	</section>
+
+	<section>
+		<h2>Tips</h2>
+		<p>On iPhone, iPad and Mac, a coffee is bought through Apple's In-App Purchase, so Apple handles the payment and Zenz never sees your
+		payment details or who you are. Zenz remembers on your device that you tipped, only to say thank you. On Windows and Android, the
+		coffee button opens Buy Me a Coffee in your browser, whose own privacy policy applies.</p>
+	</section>
+
+	<section>
+		<h2>Children</h2>
+		<p>Zenz collects no information from anyone, including children.</p>
+	</section>
+
+	<section>
+		<h2>Changes and questions</h2>
+		<p>If this ever changes, this page will say so, with a new date. Questions are welcome through <a href="./#help">Report a problem</a>.</p>
+	</section>
+
+	<footer>
+		Zenz is made by Trevor Leybourne. &middot; <a href="./">Zenz</a> &middot; <a href="./#help">Report a problem</a>
+	</footer>
+</main>
+</body>
+</html>
