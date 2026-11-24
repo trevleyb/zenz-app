@@ -56,6 +56,7 @@
 			display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 10px;
 			background: var(--accent); color: #11161e; font-weight: 600; text-decoration: none;
 		}
+		.button.quiet { background: none; color: var(--accent); border: 1px solid var(--accent); padding: 11px 21px; }
 		.platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 14px; }
 		@media (max-width: 620px) { .platforms { grid-template-columns: 1fr; } }
 		.platform { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px 18px; }
@@ -181,6 +182,14 @@
 		you use copies you already own.</p>
 	</section>
 
+	<section id="help">
+		<h2>Something wrong?</h2>
+		<p>If Zenz closes, a game won't open, or something looks wrong, please say so. Tell me which device and version of Zenz, the game, and
+		what you did just before. After a crash, the app's Home offers the log to share; attach it if you can. Reporting needs a free GitHub
+		account, and what you write there is public.</p>
+		<a class="button quiet" href="https://github.com/trevleyb/zenz-app/issues/new?template=problem.md">Report a problem</a>
+	</section>
+
 	<section class="card">
 		<h2 style="margin-top: 0">Support Zenz</h2>
 		<p>If you enjoy Zenz, you can buy me a coffee. It's a voluntary tip that helps me keep working on it. A tip unlocks nothing and
@@ -189,7 +198,7 @@
 	</section>
 
 	<footer>
-		Zenz is made by Trevor Leybourne. &middot; <a href="https://github.com/trevleyb">github.com/trevleyb</a>
+		Zenz is made by Trevor Leybourne. &middot; <a href="#help">Report a problem</a> &middot; <a href="https://github.com/trevleyb">github.com/trevleyb</a>
 	</footer>
 </main>
 <script>
