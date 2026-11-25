@@ -259,18 +259,25 @@
 		list.append(more);
 	})();
 
-	// A release's notes are a few lines, mostly "- " points: shown as a list and paragraphs, as plain text.
+	// A release's notes are a few lines, mostly "- " points: shown as a list and paragraphs, as plain text. A point wrapped onto
+	// lines indented under it is one point.
 	function notesOf(text) {
 		const holder = document.createElement("div");
 		let list = null;
+		let item = null;
 		text.split(/\r?\n/).forEach(line => {
 			const point = line.match(/^\s*[-*]\s+(.*)$/);
 			if (point) {
 				if (!list) { list = document.createElement("ul"); holder.append(list); }
-				const item = document.createElement("li");
+				item = document.createElement("li");
 				item.textContent = point[1];
 				list.append(item);
-			} else if (line.trim() !== "") {
+			} else if (item && /^\s+\S/.test(line)) {
+				item.textContent += " " + line.trim();
+			} else if (line.trim() === "") {
+				item = null;
+			} else {
+				item = null;
 				list = null;
 				const para = document.createElement("p");
 				para.textContent = line.trim();
